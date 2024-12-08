@@ -5,6 +5,14 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --soft-orange: 35, 77%, 62%;
+  --soft-red: 5, 85%, 63%;
+
+  --off-white: 36, 100%, 99%;
+  --grayish-blue: 233, 8%, 79%;
+  --dark-grayish-blue: 236, 13%, 42%;
+  --very-dark-blue: 240, 100%, 5%;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,3 +27,85 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.custom-grid {
+  display: grid;
+  grid-template-areas:
+    "header header aside "
+    "header header aside "
+    "heading section aside "
+    "heading section aside "
+    "trend trend trend";
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  gap: 1em;
+}
+
+.header {
+  grid-area: header;
+}
+
+.heading {
+  grid-area: heading;
+}
+
+.new {
+  grid-area: aside;
+}
+
+.trend {
+  grid-area: trend;
+}
+
+.section {
+  grid-area: section;
+}
+
+@media (max-width: 1020px) {
+  .custom-grid {
+    grid-template-areas:
+      "header header header"
+      "header header header"
+      "heading heading heading"
+      "heading heading  heading"
+      "section section section"
+      "section section section"
+      "aside trend trend"
+      "aside trend trend";
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+
+  .section,
+  .heading {
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  .custom-grid {
+    grid-template-areas:
+      "header"
+      "heading"
+      "section"
+      "aside "
+      "trend";
+    grid-template-rows: auto;
+    grid-template-columns: 1fr;
+  }
+  .section {
+    max-width: 500px;
+  }
+  .trend {
+    max-width: 500px;
+  }
+}
+
+/* 
+- Soft orange: hsl(35, 77%, 62%)
+- Soft red: hsl(5, 85%, 63%)
+
+Off-white: hsl(36, 100%, 99%)
+Grayish blue: hsl(233, 8%, 79%)
+Dark grayish blue: hsl(236, 13%, 42%)
+Very dark blue: hsl(240, 100%, 5%) */
